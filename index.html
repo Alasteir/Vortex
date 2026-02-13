@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Vertex Run</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="top-bar">
+      <div class="logo">
+        <span class="logo-mark" aria-hidden="true"></span>
+        <span class="logo-text">Vertex Run</span>
+      </div>
+      <div class="top-controls">
+        <button type="button" id="btnLang" class="ui-button ui-button--ghost" aria-label="Language">
+          <span id="langLabel">UA</span>
+        </button>
+        <button type="button" id="btnSound" class="ui-button ui-button--ghost" aria-label="Sound">
+          <span class="icon-sound"></span>
+        </button>
+      </div>
+    </header>
+
+    <main class="game-layout">
+      <section class="game-panel">
+        <div class="game-frame">
+          <canvas id="gameCanvas" width="1920" height="1080" aria-label="Vertex Run"></canvas>
+          <div id="tapHint" class="tap-hint" data-i18n="controls">Натисніть пробіл або торкніться, щоб стрибнути</div>
+
+          <div id="startScreen" class="overlay">
+            <div class="overlay-card">
+              <h1 class="overlay-title">Vertex Run</h1>
+              <p class="overlay-subtitle" data-i18n="subtitle">Геометричний раннер</p>
+              <div class="overlay-score">
+                <div class="score-row">
+                  <span class="score-label" data-i18n="score">Рахунок</span>
+                  <span id="overlayScore" class="score-value">0</span>
+                </div>
+                <div class="score-row">
+                  <span class="score-label" data-i18n="record">Рекорд</span>
+                  <span id="overlayBest" class="score-value">0</span>
+                </div>
+                <div class="score-row">
+                  <span class="score-label" data-i18n="deaths">Смертей</span>
+                  <span id="overlayDeaths" class="score-value">0</span>
+                </div>
+              </div>
+              <div class="overlay-actions">
+                <button type="button" id="btnStart" class="ui-button ui-button--primary" data-i18n="play">Грати</button>
+              </div>
+              <p class="overlay-hint" data-i18n="controls">Натисніть пробіл або торкніться, щоб стрибнути</p>
+            </div>
+          </div>
+
+          <div id="deathScreen" class="overlay overlay--hidden">
+            <div class="overlay-card">
+              <h1 class="overlay-title" id="deathTitle" data-i18n="gameOver">Кінець гри</h1>
+              <p class="overlay-subtitle" id="deathSubtitle"></p>
+              <div class="overlay-score">
+                <div class="score-row">
+                  <span class="score-label" data-i18n="score">Рахунок</span>
+                  <span id="finalScore" class="score-value">0</span>
+                </div>
+                <div class="score-row">
+                  <span class="score-label" data-i18n="record">Рекорд</span>
+                  <span id="overlayBestDeath" class="score-value">0</span>
+                </div>
+                <div class="score-row">
+                  <span class="score-label" data-i18n="deaths">Смертей</span>
+                  <span id="finalDeaths" class="score-value">0</span>
+                </div>
+              </div>
+              <div class="overlay-actions">
+                <button type="button" id="btnRestart" class="ui-button ui-button--primary" data-i18n="retry">Спробувати знову</button>
+              </div>
+              <p class="overlay-hint" data-i18n="controls">Натисніть пробіл або торкніться, щоб стрибнути</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="hud">
+          <div class="hud-item">
+            <span class="hud-label" data-i18n="score">Рахунок</span>
+            <span id="currentScore" class="hud-value">0</span>
+          </div>
+          <div class="hud-item">
+            <span class="hud-label" data-i18n="record">Рекорд</span>
+            <span id="recordScore" class="hud-value">0</span>
+          </div>
+          <div class="hud-item">
+            <span class="hud-label" data-i18n="deaths">Смертей</span>
+            <span id="deathsCount" class="hud-value">0</span>
+          </div>
+          <button type="button" id="btnFullscreen" class="ui-button ui-button--ghost">
+            <span class="icon-fullscreen" aria-hidden="true"></span>
+            <span id="fullscreenLabel" data-i18n="fullscreen">На весь екран</span>
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span data-i18n="brand">Неонова аркада Vertex Run.</span>
+    </footer>
+  </div>
+  <script src="game.js"></script>
+</body>
+</html>
